@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useOutletContext } from "react-router-dom";
 import PropTypes from 'prop-types';
 
@@ -181,4 +181,20 @@ export default function About() {
             </div>
         </div>
     );
+}
+
+About.propTypes = {
+    mode: PropTypes.shape({
+        theme: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired,
+        classNameAttribute: PropTypes.string.isRequired
+    }).isRequired
+}
+
+About.defaultProps = {
+    mode: {
+        theme: 'light',
+        text: 'Dark Mode',
+        classNameAttribute: 'text-black'
+    }
 }

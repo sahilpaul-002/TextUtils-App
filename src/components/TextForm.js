@@ -73,7 +73,7 @@ export default function TextForm() {
         navigator.clipboard.writeText(trimmedText) // copy to clipboard
         
         //SHow alert upon copy
-        showAlert("Cpoied to clipboard.", "success");
+        showAlert("Copied to clipboard.", "success");
     }
 
     // Remove extra spaces
@@ -92,13 +92,14 @@ export default function TextForm() {
         <>
             <div className='container my-2'>
                 <h1>{heading}</h1>
+                <hr className='mx-3 border border-secondary'/>
                 <div className={`form-group my-2 py-3 px-4 border border-${mode.theme==="dark"?"success":"black"} rounded-lg`}>
                     <textarea className="form-control my-2 shadow p-3 mb-5 rounded" name="myBox" id="myBox" rows="8" value={text} onChange={handleOnChange} onKeyDown={handleKeyDown} style={{backgroundColor: mode.theme === "dark"?"#343a40":"white", color: mode.theme==="dark"?"white":"black"}} ></textarea>
-                    <button disabled={text.length==0} type="button" className="btn btn-info mx-2 my-1 shadow" id="upButton" name='upButton' onClick={handleUpClick}>UpperCase</button>
-                    <button disabled={text.length==0} type="button" className="btn btn-info mx-2 my-1 shadow" id="lowButton" name='lowButton' onClick={handleLowClick}>LowerCase</button>
-                    <button disabled={text.length==0} type="button" className="btn btn-info mx-2 my-1 shadow" id="copyButton" name='copyButton' onClick={handleCopy}>Copy</button>
-                    <button disabled={text.length==0} type="button" className="btn btn-info mx-2 my-1 shadow" id="extraSpaceButton" name='extraSpaceButton' onClick={handleExtraSpace}>Remove extra space</button>
-                    <button disabled={text.length==0} type="button" className="btn btn-light my-1 border border-dark mx-5 shadow" id="resetButton" name='resetButton' onClick={handleResetClick}>Reset</button>
+                    <button disabled={text.length===0} type="button" className="btn btn-info mx-2 my-1 shadow" id="upButton" name='upButton' onClick={handleUpClick}>UpperCase</button>
+                    <button disabled={text.length===0} type="button" className="btn btn-info mx-2 my-1 shadow" id="lowButton" name='lowButton' onClick={handleLowClick}>LowerCase</button>
+                    <button disabled={text.length===0} type="button" className="btn btn-info mx-2 my-1 shadow" id="copyButton" name='copyButton' onClick={handleCopy}>Copy</button>
+                    <button disabled={text.length===0} type="button" className="btn btn-info mx-2 my-1 shadow" id="extraSpaceButton" name='extraSpaceButton' onClick={handleExtraSpace}>Remove extra space</button>
+                    <button disabled={text.length===0} type="button" className="btn btn-light my-1 border border-dark mx-5 shadow" id="resetButton" name='resetButton' onClick={handleResetClick}>Reset</button>
                 </div>
             </div>
             <div className="container my-2">
@@ -114,9 +115,21 @@ export default function TextForm() {
 }
 
 TextForm.propTypes = {
-    heading: PropTypes.string.isRequired
+    heading: PropTypes.string.isRequired,
+    mode: PropTypes.shape({
+        theme: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired,
+        classNameAttribute: PropTypes.string.isRequired
+    }).isRequired,
+    showAlert: PropTypes.func.isRequired
 }
 
 TextForm.defaultProps = {
-    heading: 'Set Heading Here'
+    heading: 'Set Heading Here',
+    mode: {
+        theme: 'light',
+        text: 'Dark Mode',
+        classNameAttribute: 'text-black'
+    },
+    showAlert: () => {}
 }

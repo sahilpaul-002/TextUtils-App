@@ -74,9 +74,21 @@ export default function Navbar(props) {
 }
 
 Navbar.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  mode: PropTypes.shape({
+      theme: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      classNameAttribute: PropTypes.string.isRequired
+  }).isRequired,
+  toggleMode: PropTypes.func.isRequired
 }
 
 Navbar.defaultProps = {
-  title: 'Set Title Here'
+  title: 'Set Title Here',
+  mode: {
+    theme: 'light',
+    text: 'Dark Mode',
+    classNameAttribute: 'text-black'
+  },
+  toggleMode: () => {}
 }

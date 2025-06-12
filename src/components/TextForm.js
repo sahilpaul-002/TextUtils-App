@@ -104,8 +104,8 @@ export default function TextForm() {
             </div>
             <div className="container my-2">
                 <h2>Your text summary</h2>
-                <p>{text.split(" ")[0]===""?"0":text.split(" ").length} words and {text.length} characters</p>
-                <p>{(0.08*text.split(" ").length).toFixed(2)} Minutes to read this !</p>
+                <p>{text.trim().split(/\s+/).length} words and {text.trim().split(/\s+/).join(" ").length} characters</p>
+                <p>{(0.08*text.trim().split(/\s+/).length).toFixed(2)} Minutes to read this !</p>
                 <hr className={`border border-${mode.theme==="dark"?"success":"black"}`}/>
                 <h2>Preview</h2>
                 <p>{text.length>0?text:"Enter something in the textbox above to preview it here"}</p>

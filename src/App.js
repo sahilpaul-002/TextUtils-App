@@ -25,7 +25,7 @@ function App() {
     });
   };
 
-  // Auto-dismiss logic in useEffect
+  // Auto-dismiss display alert logic in useEffect
   useEffect(() => {
     if (alert !== null) {
       const timer = setTimeout(() => {
@@ -45,6 +45,7 @@ function App() {
         text: "Light Mode",
         classNameAttribute: "text-white"
       });
+      // Set the style for document body
       document.body.style.backgroundColor = "#27445D"; // Dark background
       document.body.style.color = "white"; // Dark text color
 
@@ -57,6 +58,7 @@ function App() {
         text: "Dark Mode",
         classNameAttribute: "text-black"
       });
+      // Set the style for document body
       document.body.style.backgroundColor = "white"; // Light background
       document.body.style.color = "black"; // Light text color 
 
